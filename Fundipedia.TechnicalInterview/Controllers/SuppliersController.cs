@@ -11,9 +11,9 @@ namespace Fundipedia.TechnicalInterview.Controllers;
 [ApiController]
 public class SuppliersController : ControllerBase
 {
-    private readonly SupplierService _supplierService;
+    private readonly ISupplierService _supplierService;
 
-    public SuppliersController(SupplierService supplierService)
+    public SuppliersController(ISupplierService supplierService)
     {
         _supplierService = supplierService;
     }

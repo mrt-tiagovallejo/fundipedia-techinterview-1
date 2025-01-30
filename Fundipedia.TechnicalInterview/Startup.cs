@@ -1,4 +1,5 @@
 ﻿using Fundipedia.TechnicalInterview.Data.Context;
+using Fundipedia.TechnicalInterview.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,8 @@ public class Startup
         services.AddControllers();
         services.AddDbContext<SupplierContext>(options =>
             options.UseInMemoryDatabase(databaseName: "SupplierDatabase"));
+
+        services.AddTransient<ISupplierService, SupplierService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
