@@ -1,4 +1,5 @@
 ﻿using Fundipedia.TechnicalInterview.Data.Context;
+using Fundipedia.TechnicalInterview.Data.Repositories;
 using Fundipedia.TechnicalInterview.Domain.Services;
 using Fundipedia.TechnicalInterview.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,7 @@ public class Startup
 
         // Services
         services.AddTransient<ISupplierService, SupplierService>();
+        services.AddTransient<ISupplierRepository, SupplierRepository>();
 
         // Validators
         services.AddTransient<ISupplierValidator, SupplierValidator>();
