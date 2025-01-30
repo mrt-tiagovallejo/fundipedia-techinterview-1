@@ -19,13 +19,20 @@ public class SupplierService : ISupplierService
 
     public async Task<Supplier> GetSupplier(Guid id)
     {
-        var supplier = await _context.Suppliers.FindAsync(id);
+        var supplier = await _context.Suppliers
+            .Include(x => x.Emails)
+            .Include(x => x.Phones)
+            .FirstOrDefaultAsync(supplier => supplier.Id == id);
+        
         return supplier;
     }
 
     public async Task<List<Supplier>> GetSuppliers()
     {
-        return await _context.Suppliers.ToListAsync();
+        return await _context.Suppliers
+            .Include(x => x.Emails)
+            .Include(x => x.Phones)
+            .ToListAsync();
     }
 
     public async Task InsertSupplier(Supplier supplier)
