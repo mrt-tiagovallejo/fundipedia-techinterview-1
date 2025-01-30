@@ -1,4 +1,5 @@
 ﻿using Fundipedia.TechnicalInterview.Data.Context;
+using Fundipedia.TechnicalInterview.Domain.Validators;
 using Fundipedia.TechnicalInterview.Model.Extensions;
 using Fundipedia.TechnicalInterview.Model.Supplier;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,12 @@ namespace Fundipedia.TechnicalInterview.Domain.Services;
 public class SupplierService : ISupplierService
 {
     private readonly SupplierContext _context;
+    private readonly ISupplierValidator _supplierValidator;
 
-    public SupplierService(SupplierContext context)
+    public SupplierService(SupplierContext context, ISupplierValidator supplierValidator)
     {
         _context = context;
+        _supplierValidator = supplierValidator;
     }
 
     public async Task<Supplier> GetSupplier(Guid id)
@@ -35,10 +38,19 @@ public class SupplierService : ISupplierService
             .ToListAsync();
     }
 
-    public async Task InsertSupplier(Supplier supplier)
+    public async Task<ValidationResult> InsertSupplier(Supplier supplier)
     {
+        var result = _supplierValidator.Validate(supplier);
+
+        if (!result.IsValid)
+        {
+            return result;
+        }
+
         _context.Suppliers.Add(supplier);
         await _context.SaveChangesAsync();
+
+        return result;
     }
 
     public async Task<Supplier> DeleteSupplier(Guid id)

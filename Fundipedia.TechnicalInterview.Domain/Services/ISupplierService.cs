@@ -11,7 +11,7 @@ public interface ISupplierService
 
     Task<Supplier> GetSupplier(Guid id);
 
-    Task InsertSupplier(Supplier supplier);
+    Task<ValidationResult> InsertSupplier(Supplier supplier);
 
     Task<Supplier> DeleteSupplier(Guid id);
 }

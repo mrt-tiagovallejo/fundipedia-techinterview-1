@@ -43,7 +43,12 @@ public class SuppliersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Supplier>> PostSupplier(Supplier supplier)
     {
-        await _supplierService.InsertSupplier(supplier);
+        var validationResult = await _supplierService.InsertSupplier(supplier);
+
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.Errors);
+        }
 
         return CreatedAtAction("GetSupplier", new { id = supplier.Id }, supplier);
     }

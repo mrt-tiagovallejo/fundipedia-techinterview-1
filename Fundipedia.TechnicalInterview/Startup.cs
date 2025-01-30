@@ -1,5 +1,6 @@
 ﻿using Fundipedia.TechnicalInterview.Data.Context;
 using Fundipedia.TechnicalInterview.Domain.Services;
+using Fundipedia.TechnicalInterview.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,13 @@ public class Startup
         services.AddDbContext<SupplierContext>(options =>
             options.UseInMemoryDatabase(databaseName: "SupplierDatabase"));
 
+        // Services
         services.AddTransient<ISupplierService, SupplierService>();
+
+        // Validators
+        services.AddTransient<ISupplierValidator, SupplierValidator>();
+        services.AddTransient<IEmailValidator, EmailValidator>();
+        services.AddTransient<IPhoneValidator, PhoneValidator>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
