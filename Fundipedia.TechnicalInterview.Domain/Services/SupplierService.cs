@@ -64,6 +64,7 @@ public class SupplierService : ISupplierService
             }
 
             _context.Suppliers.Remove(supplier);
+            await _context.SaveChangesAsync();
         }
 
         return supplier;
