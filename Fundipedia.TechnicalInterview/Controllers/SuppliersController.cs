@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Fundipedia.TechnicalInterview.Model.Supplier;
-using Fundipedia.TechnicalInterview.Domain;
+using Fundipedia.TechnicalInterview.Domain.Services;
 
 namespace Fundipedia.TechnicalInterview.Controllers;
 

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Fundipedia.TechnicalInterview.Domain;
+namespace Fundipedia.TechnicalInterview.Domain.Services;
 
 public interface ISupplierService
 {

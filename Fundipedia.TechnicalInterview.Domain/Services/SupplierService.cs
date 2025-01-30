@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Fundipedia.TechnicalInterview.Domain;
+namespace Fundipedia.TechnicalInterview.Domain.Services;
 
 public class SupplierService : ISupplierService
 {
@@ -23,7 +23,7 @@ public class SupplierService : ISupplierService
             .Include(x => x.Emails)
             .Include(x => x.Phones)
             .FirstOrDefaultAsync(supplier => supplier.Id == id);
-        
+
         return supplier;
     }
 

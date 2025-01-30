@@ -1,5 +1,5 @@
 ﻿using Fundipedia.TechnicalInterview.Data.Context;
-using Fundipedia.TechnicalInterview.Domain;
+using Fundipedia.TechnicalInterview.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
